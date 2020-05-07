@@ -8,7 +8,7 @@ int main(void)
     int num_parts = 3;
     int a[] = {1, 2, 3};
 
-    if((fp = fopen("temp.txt", "w")) == NULL) {
+    if((fp = fopen("temp.txt", "rb+")) == NULL) {
         fprintf(stderr, "Can't open inventory file\n");
         exit(EXIT_FAILURE);
     }

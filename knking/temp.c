@@ -1,10 +1,8 @@
 #include <stdio.h>
 
 int main(void) {
-  char ch;
-  int a = 65;
-  ch = a;
-  printf("%c\n", ch);
+  int a = -1;
+  printf("%d\n", a % 5);
 
   return 0;
 }

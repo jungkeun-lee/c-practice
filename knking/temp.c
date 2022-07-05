@@ -1,10 +1,8 @@
+#include <math.h>
 #include <stdio.h>
 
 int main(void) {
-  char ch = '9';
-  int num;
-  num = ch - '0';
-  printf("%d\n", num);
-
+  double i = 3, j = 5;
+  printf("%lf\n", pow(i, j));
   return 0;
 }

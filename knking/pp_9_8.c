@@ -42,6 +42,8 @@ int main(void) {
       lose++;
     printf("\nPlay again? ");
     yn = getchar();
+    if (yn == '\n')
+      yn = getchar();
     if (yn == 'y')
       continue;
     else

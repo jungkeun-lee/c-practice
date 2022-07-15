@@ -7,7 +7,7 @@
 #define NUM_CARDS 5
 
 int hand[NUM_RANKS][NUM_SUITS];
-bool straight, flush, four, three, fullhouse;
+bool straight, flush, four, three, fullhouse, royal;
 int pairs;
 
 void read_cards(void);
@@ -157,8 +157,10 @@ void analyze_hand(void) {
   sum = 0;
   for (int i = 1; i < NUM_CARDS; i++)
     sum += hand[i][0] - hand[0][0];
-  if (sum == 10)
+  if (sum == 10 || sum == 18)
     straight = true;
+  if (sum == 10 || hand[0][0] == 8)
+    royal = true;
 
   int index = 0;
   int result = 0;
@@ -195,9 +197,12 @@ void analyze_hand(void) {
 }
 
 void print_result(void) {
-  if (straight && flush)
-    printf("Straight flush");
-  else if (four)
+  if (straight && flush) {
+    if (royal == true)
+      printf("Royal flush");
+    else
+      printf("Straight flush");
+  } else if (four)
     printf("Four of a kind");
   else if (fullhouse)
     printf("Full house");

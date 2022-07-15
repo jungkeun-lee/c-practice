@@ -157,7 +157,7 @@ void analyze_hand(void) {
   sum = 0;
   for (int i = 1; i < NUM_CARDS; i++)
     sum += hand[i][0] - hand[0][0];
-  if (sum == 10 || sum == 18)
+  if (sum == 10)
     straight = true;
   if (sum == 10 || hand[0][0] == 8)
     royal = true;

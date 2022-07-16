@@ -1,8 +1,7 @@
 #include <stdio.h>
 
 int main(void) {
-  char ch = '+';
-  if (ch == 43)
-    printf("%d\n", 1 + 2);
+  char ch = 53;
+  printf("%d\n", (int)(ch - 48));
   return 0;
 }

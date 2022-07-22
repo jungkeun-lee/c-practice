@@ -1,16 +1,54 @@
 #include <stdio.h>
 
+#define N 7
+
+void quicksort(int a[], int *low, int *high);
+int *split(int a[], int *low, int *high);
+
 int main(void) {
-  printf("This program prints a table of squares\n");
+  int a[N], i;
+  int *p;
+  printf("Enter %d numbers to be sorted: ", N);
+  for (i = 0; i < N; i++)
+    scanf("%d", &a[i]);
 
-  int num, i = 1;
-  printf("Enter number of entries in table: ");
-  scanf("%d", &num);
+  quicksort(a, a, a + N - 1);
 
-  while (i <= num) {
-    printf("%10d\t %10d\n", i, i * i);
-    i++;
-  }
+  printf("In sorted order: ");
+  for (p = a; p < a + N; p++)
+    printf("%d ", *p);
+  printf("\n");
 
   return 0;
+}
+
+void quicksort(int a[], int *low, int *high) {
+  int *middle;
+
+  if (low >= high)
+    return;
+  middle = split(a, low, high);
+  quicksort(a, low, middle - 1);
+  quicksort(a, middle + 1, high);
+}
+
+int *split(int a[], int *low, int *high) {
+  int part_element = *low;
+
+  for (;;) {
+    while (low < high && part_element <= *high)
+      high--;
+    if (low >= high)
+      break;
+    *low++ = *high;
+
+    while (low < high && *low <= part_element)
+      low++;
+    if (low >= high)
+      break;
+    *high-- = *low;
+  }
+
+  *high = part_element;
+  return high;
 }
